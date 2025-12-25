@@ -5,5 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "https://github.com/Aysel007/web-portfolio-aysel.git",
+  // Ganti link panjang tadi dengan nama repo saja, diapit garis miring /
+  base: "/web-portfolio-aysel/",
 });
