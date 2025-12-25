@@ -66,7 +66,6 @@ function App() {
               {/* Glow Pusat */}
               <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] bg-violet-600/30 rounded-full blur-[60px] sm:blur-[80px]"></div>
 
-              {/* FIX 2: Orbit Ring  */}
               {/* Orbit Ring 1 (Besar Tipis) */}
               <div className="absolute w-[85vw] h-[85vw] max-w-[380px] max-h-[380px] border border-white/5 rounded-full animate-[spin_10s_linear_infinite]"></div>
 
@@ -76,10 +75,12 @@ function App() {
 
             {/* 2. LAYER TENGAH: GHOST ICONS */}
 
+            {/* ----- FIX 1: Ikon HTML diperbesar dan posisinya disesuaikan agar maksimal ----- */}
             {/* HTML5 */}
-            <div className="absolute -top-5 -left-2 sm:-top-10 sm:-left-10 text-5xl sm:text-7xl text-white/5 -rotate-45 -z-10 animate-pulse delay-300">
+            <div className="absolute -top-8 -left-4 sm:-top-16 sm:-left-16 text-6xl sm:text-8xl text-white/5 -rotate-45 -z-10 animate-pulse delay-300">
               <i className="ri-html5-fill"></i>
             </div>
+            {/* --------------------------------------------------------------------------- */}
 
             {/* CSS3 */}
             <div className="absolute bottom-5 -left-0 sm:bottom-10 sm:-left-5 text-4xl sm:text-6xl text-white/5 rotate-12 -z-10 animate-pulse delay-700">
@@ -264,12 +265,14 @@ function App() {
                 data-aos-delay={proyek.dad}
               >
                 <div className="overflow-hidden rounded-lg mb-4">
+                  {/* ----- FIX 2: Hapus efek hover scale dan transition pada gambar ----- */}
                   <img
                     src={proyek.gambar}
                     alt="proyek image"
-                    className="w-full group-hover:scale-110 transition-transform duration-500"
+                    className="w-full" // Class 'group-hover:scale-110' dan 'transition-transform' dihapus
                     loading="lazy"
                   />
+                  {/* ------------------------------------------------------------------ */}
                 </div>
 
                 <div>
@@ -321,7 +324,6 @@ function App() {
           >
             Mari Terhubung Dengan Saya.
           </p>
-          {/* FIX 3: Padding Form disesuaikan (p-6 di HP, p-10 di Desktop) */}
           <form
             action="https://formsubmit.co/ayselghazwan635@gmail.com"
             method="POST"
