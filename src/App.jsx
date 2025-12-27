@@ -5,9 +5,11 @@ import { listTools, listProyek } from "./data";
 
 function App() {
   return (
-    <div className="overflow-x-hidden w-full min-h-screen relative text-white">
+    // wrapper utama
+    <div className="overflow-x-hidden w-full min-h-screen relative text-white selection:bg-violet-500 selection:text-white">
       {/* Background Aurora */}
-      <div className="fixed inset-0 z-0 bg-black pointer-events-none">
+      {/* FIX 2: Ubah z-0 menjadi z-[-1] agar benar-benar di belakang layer aplikasi */}
+      <div className="fixed inset-0 z-[-1] bg-black pointer-events-none">
         <Aurora
           colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
           blend={0.5}
@@ -18,127 +20,153 @@ function App() {
 
       {/* Main Container */}
       <div className="container mx-auto px-4 relative z-10">
-        {/* HERO SECTION */}
-        <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-10 grid-cols-1 min-h-[90vh]">
-          {/* TEXT CONTENT */}
-          <div className="animate__animated animate__fadeInUp animate__delay-3s order-2 md:order-1">
-            <div className="flex items-center gap-3 mb-6 bg-zinc-800/80 backdrop-blur-sm w-fit p-4 rounded-2xl border border-zinc-700">
-              <q className="italic text-sm sm:text-base">
-                Ngoding itu sangatlah menyenangkan.😁
-              </q>
-            </div>
-            {/* Responsif Font Size */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl/tight font-bold mb-6">
-              <TextType
-                text={["HI, Saya Aysel", "HI, Saya Aysel"]}
-                typingSpeed={80}
-                pauseDuration={1500}
-                showCursor={true}
-                cursorCharacter="|"
-              />
-            </h1>
-            <p className="text-sm sm:text-base/loose mb-6 opacity-60">
-              Saya mempunyai ketertarikan dalam bidang Programming dan Designer,
-              terutama pada pembuatan Website dan Desain seperti Poster, Pamflet
-              serta Banner, ketertarikan pada bidang ini sudah berlangsung lebih
-              dari 3 Tahun untuk semua Bidang.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center sm:gap-4 gap-3">
-              <a
-                href="#"
-                className="bg-violet-700 w-full sm:w-auto text-center p-4 rounded-2xl hover:bg-violet-600 transition-all shadow-lg shadow-violet-700/30"
-              >
-                Download CV <i className="ri-download-line ri-lg ml-2"></i>
-              </a>
-              <a
-                href="#project"
-                className="bg-zinc-700 w-full sm:w-auto text-center p-4 rounded-2xl hover:bg-zinc-600 transition-all"
-              >
-                Lihat Project <i className="ri-arrow-down-line ri-lg ml-2"></i>
-              </a>
-            </div>
-          </div>
+        {/* HERO SECTION - ID CARD STYLE */}
+        <div className="hero flex items-center justify-center min-h-[90vh] pt-28 pb-10">
+          {/* --- KTP / ID CARD CONTAINER --- */}
+          <div
+            className="relative w-full max-w-6xl bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-12 overflow-hidden shadow-2xl group"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            {/* Dekorasi Efek Shine pada Card */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none rounded-[3rem]"></div>
+            <div className="absolute -top-[200px] -right-[200px] w-[500px] h-[500px] bg-violet-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-          {/* IMAGE COMPOSITION */}
-          <div className="relative w-full flex justify-center items-center order-1 md:order-2 perspective-1000 py-10 md:py-0">
-            {/* 1. LAYER BELAKANG: ORBIT RINGS & GLOW */}
-            <div className="absolute inset-0 flex items-center justify-center -z-20">
-              {/* Glow Pusat */}
-              <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] bg-violet-600/30 rounded-full blur-[60px] sm:blur-[80px]"></div>
+            <div className="grid md:grid-cols-2 gap-10 items-center relative z-10">
+              {/* KOLOM KIRI: TEXT CONTENT */}
+              <div className="order-2 md:order-1 text-left">
+                <div className="flex items-center gap-3 mb-6 bg-zinc-800/60 backdrop-blur-md w-fit p-3 px-5 rounded-full border border-zinc-700/50 shadow-inner">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <q className="italic text-xs sm:text-sm text-zinc-300">
+                    Ngoding itu sangatlah menyenangkan.😁
+                  </q>
+                </div>
 
-              {/* Orbit Ring 1 (Besar Tipis) */}
-              <div className="absolute w-[85vw] h-[85vw] max-w-[380px] max-h-[380px] border border-white/5 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl/tight font-bold mb-6 tracking-tight">
+                  <TextType
+                    text={["HI, Saya Aysel", "Web Developer"]}
+                    typingSpeed={80}
+                    pauseDuration={1500}
+                    showCursor={true}
+                    cursorCharacter="|"
+                  />
+                </h1>
 
-              {/* Orbit Ring 2 */}
-              <div className="absolute w-[70vw] h-[70vw] max-w-[320px] max-h-[320px] border border-dashed border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-            </div>
+                <p className="text-sm sm:text-base/loose mb-8 opacity-70 text-zinc-300 max-w-md">
+                  Saya mempunyai ketertarikan dalam bidang Programming dan
+                  Designer, terutama pada pembuatan Website.
+                </p>
 
-            {/* 2. LAYER TENGAH: GHOST ICONS */}
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <a
+                    href="#"
+                    className="bg-violet-600 w-full sm:w-auto text-center px-8 py-3 rounded-xl hover:bg-violet-500 transition-all shadow-lg shadow-violet-600/20 font-semibold text-sm"
+                  >
+                    Download CV <i className="ri-download-line ml-2"></i>
+                  </a>
+                  <a
+                    href="#project"
+                    className="bg-zinc-800/50 w-full sm:w-auto text-center px-8 py-3 rounded-xl hover:bg-zinc-700 transition-all border border-zinc-700 text-sm font-medium"
+                  >
+                    Lihat Project <i className="ri-arrow-right-line ml-2"></i>
+                  </a>
+                </div>
+              </div>
 
-            {/* ----- FIX 1: Ikon HTML diperbesar dan posisinya disesuaikan agar maksimal ----- */}
-            {/* HTML5 */}
-            <div className="absolute -top-8 -left-4 sm:-top-16 sm:-left-16 text-6xl sm:text-8xl text-white/5 -rotate-45 -z-10 animate-pulse delay-300">
-              <i className="ri-html5-fill"></i>
-            </div>
-            {/* --------------------------------------------------------------------------- */}
+              {/* KOLOM KANAN: IMAGE WITH ORBIT */}
+              <div className="relative w-full flex justify-center items-center order-1 md:order-2 py-10 md:py-0">
+                {/* Container Orbit Utama */}
+                <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] flex justify-center items-center">
+                  {/* 1. LAYER TERLUAR: 10 ICON BAYANGAN (GHOST ICONS) */}
+                  <div className="absolute inset-[-40px] animate-[spin_80s_linear_infinite] pointer-events-none opacity-20">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2">
+                      <i className="ri-database-2-line text-4xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute top-[15%] right-[15%]">
+                      <i className="ri-code-box-line text-3xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute top-1/2 right-0 translate-x-1/2">
+                      <i className="ri-cpu-line text-4xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute bottom-[15%] right-[15%]">
+                      <i className="ri-terminal-box-line text-3xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+                      <i className="ri-braces-line text-4xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute bottom-[15%] left-[15%]">
+                      <i className="ri-bug-line text-3xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute top-1/2 left-0 -translate-x-1/2">
+                      <i className="ri-command-line text-4xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute top-[15%] left-[15%]">
+                      <i className="ri-links-line text-3xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute top-1/3 left-10">
+                      <i className="ri-window-line text-2xl text-zinc-400"></i>
+                    </div>
+                    <div className="absolute bottom-1/3 right-10">
+                      <i className="ri-server-line text-2xl text-zinc-400"></i>
+                    </div>
+                  </div>
 
-            {/* CSS3 */}
-            <div className="absolute bottom-5 -left-0 sm:bottom-10 sm:-left-5 text-4xl sm:text-6xl text-white/5 rotate-12 -z-10 animate-pulse delay-700">
-              <i className="ri-css3-fill"></i>
-            </div>
+                  {/* 2. LAYER TENGAH: GARIS ORBIT DEKORASI */}
+                  <div className="absolute inset-0 border border-dashed border-white/10 rounded-full animate-[spin_60s_linear_infinite] -z-10"></div>
 
-            {/* Bootstrap */}
-            <div className="absolute -bottom-5 right-5 sm:right-10 text-5xl sm:text-7xl text-white/5 -rotate-12 -z-10 animate-pulse delay-500">
-              <i className="ri-bootstrap-fill"></i>
-            </div>
+                  {/* 3. MAIN IMAGE (FOTO) */}
+                  <div className="relative z-10 group/img">
+                    <div className="absolute -inset-1 bg-gradient-to-b from-violet-500/40 to-cyan-500/40 rounded-[2rem] blur-xl transition-all duration-500 group-hover/img:blur-2xl"></div>
 
-            {/* Database */}
-            <div className="absolute top-0 right-0 text-4xl sm:text-6xl text-white/5 rotate-45 -z-10 animate-pulse">
-              <i className="ri-database-2-fill"></i>
-            </div>
+                    <div className="relative rounded-[1.8rem] overflow-hidden border border-white/20 bg-zinc-900/80 p-1">
+                      <img
+                        src={DataImage.HeroImage}
+                        alt="Aysel Ghazwan"
+                        className="w-[180px] sm:w-[240px] rounded-[1.5rem] object-cover hover:scale-105 transition-transform duration-700 ease-in-out filter brightness-90 hover:brightness-100"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
 
-            {/* Git */}
-            <div className="absolute top-1/2 -left-4 sm:-left-12 text-3xl sm:text-5xl text-white/5 -rotate-90 -z-10 animate-pulse delay-1000">
-              <i className="ri-git-merge-fill"></i>
-            </div>
+                  {/* 4. LAYER DEPAN: 6 COLORFUL ICONS (Tight Orbit) */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20 animate-float-slow">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-md">
+                      <i className="ri-reactjs-line text-3xl text-cyan-400 animate-[spin_10s_linear_infinite]"></i>
+                    </div>
+                  </div>
 
-            {/* Code Box */}
-            <div className="absolute top-1/3 -right-4 sm:-right-10 text-3xl sm:text-5xl text-white/5 rotate-90 -z-10 animate-pulse delay-200">
-              <i className="ri-code-box-fill"></i>
-            </div>
+                  <div className="absolute top-8 -right-4 z-20 animate-float-medium delay-200">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.3)] backdrop-blur-md">
+                      <i className="ri-javascript-fill text-3xl text-yellow-400"></i>
+                    </div>
+                  </div>
 
-            {/* 3. LAYER DEPAN: FLOATING ICONS */}
+                  <div className="absolute bottom-8 -right-4 z-20 animate-float-fast delay-500">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-orange-500/30 shadow-[0_0_15px_rgba(249,115,22,0.3)] backdrop-blur-md">
+                      <i className="ri-html5-fill text-3xl text-orange-500"></i>
+                    </div>
+                  </div>
 
-            {/* React */}
-            <div className="absolute top-0 left-0 sm:top-4 sm:-left-4 animate-float-slow z-30">
-              <div className="bg-zinc-900/80 backdrop-blur-md p-2 sm:p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(34,211,238,0.2)]">
-                <i className="ri-reactjs-line text-2xl sm:text-4xl text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"></i>
+                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 animate-float-slow delay-700">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.3)] backdrop-blur-md">
+                      <i className="ri-css3-fill text-3xl text-blue-500"></i>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-8 -left-4 z-20 animate-float-medium delay-1000">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.3)] backdrop-blur-md">
+                      <i className="ri-nodejs-fill text-3xl text-green-500"></i>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-8 -left-4 z-20 animate-float-fast delay-150">
+                    <div className="bg-zinc-900/90 p-2.5 rounded-xl border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.3)] backdrop-blur-md">
+                      <i className="ri-git-merge-fill text-3xl text-red-500"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Code/Slash */}
-            <div className="absolute top-1/2 -right-0 sm:-right-8 animate-float-medium z-30">
-              <div className="bg-zinc-900/80 backdrop-blur-md p-2 sm:p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-                <i className="ri-code-s-slash-line text-xl sm:text-3xl text-orange-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.5)]"></i>
-              </div>
-            </div>
-
-            {/* JS */}
-            <div className="absolute bottom-6 left-0 sm:-left-2 animate-float-fast z-30">
-              <div className="bg-zinc-900/80 backdrop-blur-md p-2 sm:p-3 rounded-2xl border border-white/10 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                <span className="font-bold text-yellow-400 text-base sm:text-xl font-mono drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]">
-                  JS
-                </span>
-              </div>
-            </div>
-
-            {/* 4. FOTO UTAMA */}
-            <img
-              src={DataImage.HeroImage}
-              alt="Aysel Ghazwan"
-              className="relative z-10 w-[280px] sm:w-full sm:max-w-[350px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] mask-image-b-gradient"
-              loading="lazy"
-            />
           </div>
         </div>
         {/* End Hero */}
@@ -158,10 +186,8 @@ function App() {
             />
             <p className="text-sm sm:text-base/loose mb-10 text-center sm:text-left">
               Hi, perkenalkan saya Aysel Ghazwan Al Jauzi, seorang Web Developer
-              dan Designer untuk UI/UX Design maupun Product Digital, Saya
-              percaya bahwa desain dan fungsionalitas harus berjalan beriringan,
-              sehingga setiap proyek yang saya kembangkan tidak hanya terlihat
-              menarik tetapi juga memberikan pengalaman pengguna yang optimal.
+              dan Designer untuk UI/UX Design, dengan majunya era digital, saya
+              yakin bahwa web akan sangat dibutuhkan kedepanya
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0">
               <img
@@ -265,14 +291,12 @@ function App() {
                 data-aos-delay={proyek.dad}
               >
                 <div className="overflow-hidden rounded-lg mb-4">
-                  {/* ----- FIX 2: Hapus efek hover scale dan transition pada gambar ----- */}
                   <img
                     src={proyek.gambar}
                     alt="proyek image"
-                    className="w-full" // Class 'group-hover:scale-110' dan 'transition-transform' dihapus
+                    className="w-full"
                     loading="lazy"
                   />
-                  {/* ------------------------------------------------------------------ */}
                 </div>
 
                 <div>
@@ -396,6 +420,7 @@ function App() {
           </p>
         </footer>
       </div>
+      {/* FIX 3: Tag Penutup yang benar untuk Container dan Wrapper Utama */}
     </div>
   );
 }

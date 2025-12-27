@@ -1,4 +1,4 @@
-import HeroImage from "../assets/my-photo-transparent.webp";
+import HeroImage from "../assets/heroimage.webp";
 
 const Image = {
   HeroImage,
