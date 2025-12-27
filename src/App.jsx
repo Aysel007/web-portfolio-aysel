@@ -21,10 +21,10 @@ function App() {
       {/* Main Container */}
       <div className="container mx-auto px-4 relative z-10">
         {/* HERO SECTION - ID CARD STYLE */}
-        <div className="hero flex items-center justify-center min-h-[90vh] pt-28 pb-10">
+        <div className="hero flex items-center justify-center min-h-screen sm:pt-28 pb-10 ">
           {/* --- KTP / ID CARD CONTAINER --- */}
           <div
-            className="relative w-full max-w-6xl bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-12 overflow-hidden shadow-2xl group"
+            className="relative w-full max-w-6xl bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-[3rem] md:p-12 sm:p-6  overflow-hidden shadow-2xl group"
             data-aos="fade-up"
             data-aos-duration="1000"
           >
@@ -35,14 +35,13 @@ function App() {
             <div className="grid md:grid-cols-2 gap-10 items-center relative z-10">
               {/* KOLOM KIRI: TEXT CONTENT */}
               <div className="order-2 md:order-1 text-left">
-                <div className="flex items-center gap-3 mb-6 bg-zinc-800/60 backdrop-blur-md w-fit p-3 px-5 rounded-full border border-zinc-700/50 shadow-inner">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <q className="italic text-xs sm:text-sm text-zinc-300">
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 bg-zinc-800/60 backdrop-blur-md w-full sm:w-fit p-2 sm:p-3 px-4 sm:px-5 rounded-full border border-zinc-700/50 shadow-inner mx-auto sm:mx-0">
+                  <q className="italic text-xs sm:text-sm text-center text-zinc-300">
                     Ngoding itu sangatlah menyenangkan.😁
                   </q>
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl/tight font-bold mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl/tight font-bold mb-6 tracking-tight text-center sm:text-left">
                   <TextType
                     text={["HI, Saya Aysel", "Web Developer"]}
                     typingSpeed={80}
@@ -52,7 +51,7 @@ function App() {
                   />
                 </h1>
 
-                <p className="text-sm sm:text-base/loose mb-8 opacity-70 text-zinc-300 max-w-md">
+                <p className="text-sm sm:text-base/loose text-center mb-8 opacity-70 text-zinc-300 max-w-md">
                   Saya mempunyai ketertarikan dalam bidang Programming dan
                   Designer, terutama pada pembuatan Website.
                 </p>
